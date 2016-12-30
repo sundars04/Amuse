@@ -1,4 +1,4 @@
-= form_for(post) do |f|
+= form_for @post, html: {multipart: true} do |f|
   - if post.errors.any?
     #error_explanation
       %h2
@@ -7,6 +7,8 @@
       %ul
         - post.errors.full_messages.each do |message|
           %li= message
+  .field    
+    = f.file_field :image
   .field
     = f.label :title
     = f.text_field :title
