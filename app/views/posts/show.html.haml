@@ -4,6 +4,18 @@
 %p= @post.description
 %p= @post.user.name
 
+#comment
+  %h5.comment_count= pluralize(@post.comments.count, "Comment")
+  - @comments.each do |comment|
+    .comment
+      %p.username= comment.user.name
+      %span(class="content")= comment.content
+      - if comment.user == current_user
+        = link_to post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" } do
+          %span(class="glyphicon glyphicon-remove delete-comment")
+  
+  = render partial: 'comments/form'
+
 = link_to 'Back', posts_path
 |
 = link_to 'Edit', edit_post_path(@post)
