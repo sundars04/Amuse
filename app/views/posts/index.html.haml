@@ -2,7 +2,6 @@
   = link_to (image_tag post.image.url(:small)), post
   %h2= link_to post.title, post
   %p
-    = post.comments.count
-    Comments
+    = pluralize(post.comments.count, "Comment")    
   
 = link_to 'Amuse Us', new_post_path

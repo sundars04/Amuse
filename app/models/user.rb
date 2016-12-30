@@ -35,5 +35,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :posts, dependent: :destroy
+  acts_as_voter
   has_many :comments, dependent: :destroy
 end
