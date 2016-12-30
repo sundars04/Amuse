@@ -1,0 +1,14 @@
+- if alert
+  #notice_wrapper
+    %p.alert= alert
+- elsif notice
+  #notice_wrapper
+    %p.notice= notice
+:javascript
+  $(document).ready(function(){
+    setTimeout(function() {
+      $('#notice_wrapper').fadeOut("slow", function() {
+        $this.remove();
+      });
+    }, 4500 );
+  });
