@@ -14,7 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
-/system/posts/images/*
+/public/system/posts/*
 !/log/.keep
 !/tmp/.keep
 

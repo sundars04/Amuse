@@ -11,19 +11,15 @@
       .description= simple_format(@post.description)
     .post_data      
       = link_to "Visit Link", @post.link, target: "_blank", class: "button"
-
-      - if current_user.liked? @post
-        = render 'unlike_link', post: @post
-      - else
-        = render 'like_link', post: @post
-
-        = pluralize(@post.get_likes.size, "Like")
-
-    
-  
-
-
-
+      .data
+        #likes
+          = render partial: 'likes'
+      %p.data
+        %i.fa.fa-comments-o
+          =pluralize(@post.comments.count, "Comment")
+      - if @post.user == current_user
+        = link_to 'Edit', edit_post_path(@post), class: "data"
+        = link_to 'Delete', post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this?"}, class: "data"
 #comments
   %h5.comment_count= pluralize(@post.comments.count, "Comment")
   - @comments.each do |comment|
@@ -35,19 +31,3 @@
           %span(class="glyphicon glyphicon-remove delete-comment")
   
   = render partial: 'comments/form'
-
-  .vote_count
-    = @post.get_likes.size
-    
-
-  .votes
-    - if current_user.liked? @post
-      = link_to "Unlike", unlike_post_path(@post), method: :get, remote: true, class: 'unlike_post'
-    - else
-      = link_to "Like", like_post_path(@post), method: :get, remote: true, class: 'like_post'
-
-= link_to 'Back', posts_path
-|
-= link_to 'Edit', edit_post_path(@post)
-|
-= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this?"}

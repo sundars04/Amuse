@@ -34,7 +34,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_many :posts, dependent: :destroy
-  acts_as_voter
+  has_many :posts, dependent: :destroy  
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+
+  def likes?(post)
+    post.likes.where(user_id: id).any?
+  end
 end

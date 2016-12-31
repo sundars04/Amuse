@@ -16,7 +16,7 @@
 #
 
 class Post < ApplicationRecord
-  acts_as_votable
+  
   belongs_to :user
 
   # Sexy Validations
@@ -28,4 +28,5 @@ class Post < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_many :comments, dependent: :destroy
+  has_many :likes
 end
