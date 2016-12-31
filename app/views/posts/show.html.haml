@@ -4,7 +4,7 @@
 %p= @post.description
 %p= @post.user.name
 
-#comment
+#comments
   %h5.comment_count= pluralize(@post.comments.count, "Comment")
   - @comments.each do |comment|
     .comment
