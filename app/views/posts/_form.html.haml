@@ -1,22 +1,22 @@
-= form_for @post, html: {multipart: true} do |f|
-  - if post.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(post.errors.count, "error")
-        prohibited this post from being saved:
-      %ul
-        - post.errors.full_messages.each do |message|
-          %li= message
-  .field    
-    = f.file_field :image
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :link
-    = f.text_field :link
-  .field
-    = f.label :description
-    = f.text_area :description
-  .actions
-    = f.submit
+= simple_form_for @post, html: { multipart: true } do |f|
+  .row
+    - if post.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(post.errors.count, "error")
+          prohibited this post from being saved:
+        %ul
+          - post.errors.full_messages.each do |message|
+            %li= message
+  .container-fluid
+    .form-group.text-center
+      %h4 Upload an image (this is required):
+      = f.input :image, label: false
+    .form-group.text-center
+      = f.input :title, label: false, placeholder: 'Add your title'
+    .form-group.text-center
+      = f.input :link, label: false, placeholder: 'Add your link'
+    .form-group.text-center
+      = f.input :description, label: false, placeholder: 'Add your title'
+    .form-group.text-center
+      = f.button :submit, class: 'button'

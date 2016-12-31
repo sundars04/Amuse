@@ -1,8 +1,28 @@
-= image_tag @post.image.url(:medium)
-%h1= @post.title
-%p= @post.link
-%p= @post.description
-%p= @post.user.name
+#post_show
+  %h1= @post.title
+  %p.username
+    Share by
+    = @post.user.name
+    about
+    = time_ago_in_words(@post.created_at)
+  .clearfix
+    .post_image_description
+      = image_tag @post.image.url(:medium)
+      .description= simple_format(@post.description)
+    .post_data      
+      = link_to "Visit Link", @post.link, target: "_blank", class: "button"
+
+      - if current_user.liked? @post
+        = render 'unlike_link', post: @post
+      - else
+        = render 'like_link', post: @post
+
+        = pluralize(@post.get_likes.size, "Like")
+
+    
+  
+
+
 
 #comments
   %h5.comment_count= pluralize(@post.comments.count, "Comment")
