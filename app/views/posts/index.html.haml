@@ -12,9 +12,9 @@
     %span
       Share Your inspiration and see what's inspiring others
 
-#posts
+#posts.transitions-enabled.masonry
   - @posts.each do |post|
-    .post
+    .box.post
       .post_image
         = link_to (image_tag post.image.url(:small)), post
       .post_content
