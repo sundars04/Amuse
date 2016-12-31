@@ -24,7 +24,7 @@ class Post < ApplicationRecord
                     :length   => { :minimum => 3 }
 
   scope :sorted, -> { order("created_at Desc") }
-  has_attached_file :image, styles: { medium: "700x500>", small: "350x250>" }
+  has_attached_file :image, styles: { medium: "700x500#", small: "350x250#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_many :comments, dependent: :destroy

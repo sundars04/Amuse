@@ -13,6 +13,10 @@
     width: 50%;
     float: left;
     margin-right: 5%;
+    .img {
+      -webkit-box-shadow: 0 0 10px 1px #C2BCBC;
+      box-shadow: 0 0 10px 1px #C2BCBC;
+    }
   }
   .post_data {
     width: 15%;
@@ -44,7 +48,7 @@
     width: 25%;
     margin-left: 5%;
     margin-top: -3.2rem;
-    float: left;
+    float: left;    
     h3 {
       font-size: 1rem;
     }
@@ -52,12 +56,14 @@
       background: #F8F9FA;
       border: 1px solid #E4E4E4;
       border-radius: 0.3rem;
+      -webkit-box-shadow: 0 0 10px 1px #C2BCBC;
+      box-shadow: 0 0 10px 1px #C2BCBC;
       .post_image {
         height: 200px;
         overflow: hidden;
         img {
           width: 100%;
-          border-radius: .3rem .3rem 0 0;
+          border-radius: .3rem .3rem 0 0;          
         }
       }
       .post_content {
