@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -91,5 +92,11 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :link, :description, :image)
+    end
+
+    def require_same_user
+      if current_user != @post.user
+        redirect_to root_path, notice:'You can edit or delete only your posts'
+      end
     end
 end
