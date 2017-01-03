@@ -6,16 +6,14 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.sorted
+    @posts = Post.paginate(page: params[:page], per_page: 9).sorted
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comments = Comment.where(post_id: @post)
-    if @post
-      @random_post = Post.where.not(id: @post).order("RANDOM()").first
-    end
+    @comments = Comment.where(post_id: @post)    
+    @random_post = Post.where.not(id: @post).order("RANDOM()").first    
   end
 
   # GET /posts/new

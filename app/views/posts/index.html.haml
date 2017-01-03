@@ -31,3 +31,8 @@
             %span
               %i.fa.fa-heart
                 = post.likes.size
+
+#posts
+  .text-center
+    %br
+    = will_paginate @posts, previous_label: "Previous", next_label: "Next"
