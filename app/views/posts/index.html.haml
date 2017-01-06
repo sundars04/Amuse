@@ -4,35 +4,40 @@
     = current_user.name
     %br
     %span
-      Share Your inspiration and see what's inspiring others
+      Share Your Reviews and see other's thoughts
 - else
   %p#intro
-    What Amuses you?
+    What's Your Taste?
     %br
     %span
-      Share Your inspiration and see what's inspiring others
+      Share Your Reviews and see other's thoughts
 
-#posts.transitions-enabled.masonry
+#posts.transitions-enabled
   - @posts.each do |post|
-    .box.post
-      .post_image
-        = link_to (image_tag post.image.url(:small)), post
-      .post_content
-        .title
-          %h2= link_to post.title, post
-        .data.clearfix
-          %p.username
-            Shared by
-            = post.user.name
-          %p.buttons
-            %span
-              %i.fa.fa-comments-o
-                = post.comments.count
-            %span
-              %i.fa.fa-heart
-                = post.likes.size
+    .box
+      .post
+        .post_image
+          = link_to (image_tag post.image.url(:small)), post
+        .post_content
+          .title
+            %h2= link_to post.title, post
+          .data.clearfix
+            %p.username
+              Shared by
+              = post.user.name
+            %p.buttons
+              %span
+                %i.fa.fa-comments-o
+                  = post.comments.count
+              %span
+                %i.fa.fa-heart
+                  = post.likes.size
 
-#posts
+
+
+
+
+.posts
   .text-center
     %br
     = will_paginate @posts, previous_label: "Previous", next_label: "Next"
