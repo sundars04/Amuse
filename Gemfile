@@ -20,6 +20,7 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'masonry-rails'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'jquery-turbolinks', '~> 2.1'
+gem 'aws-sdk', '~> 2'
 
 
 group :development, :test do
